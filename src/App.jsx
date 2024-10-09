@@ -4,20 +4,48 @@ import DataTable from 'react-data-table-component';
 
 const initialData = [
     {
-        name: 'Carla Murphy',
+        name: 'Carla Murphy1',
         email: 'carla.selise.test@yopmail.com',
         role: 'Candidate of HFP Bauleiter',
-        phone: '+49*******25',
+        phone: '+494353425',
         dateCreated: '22.01.2023'
     },
     {
-        name: 'Georgia Weber',
+        name: 'Georgia Weber1',
         email: 'georgia.selise.test@yopmail.com',
         role: 'Candidate of HFP Bauleiter',
-        phone: '+49*******22',
+        phone: '+49345345322',
         dateCreated: '22.01.2023'
     },
-    
+    {
+        name: 'Carla Murphy2',
+        email: 'carla.selise.test@yopmail.com',
+        role: 'Candidate of HFP Bauleiter',
+        phone: '+494353425',
+        dateCreated: '22.01.2023'
+    },
+    {
+        name: 'Georgia Weber2',
+        email: 'georgia.selise.test@yopmail.com',
+        role: 'Candidate of HFP Bauleiter',
+        phone: '+49345345322',
+        dateCreated: '22.01.2023'
+    },
+    {
+        name: 'Carla Murphy3',
+        email: 'carla.selise.test@yopmail.com',
+        role: 'Candidate of HFP Bauleiter',
+        phone: '+494353425',
+        dateCreated: '22.01.2023'
+    },
+    {
+        name: 'Georgia Weber3',
+        email: 'georgia.selise.test@yopmail.com',
+        role: 'Candidate of HFP Bauleiter',
+        phone: '+49345345322',
+        dateCreated: '22.01.2023'
+    },
+
 ];
 
 const columns = [
@@ -53,10 +81,10 @@ const User = () => {
     const [filteredData, setFilteredData] = useState(initialData);
     const [data, setData] = useState(initialData);
 
-    
+
     const formRef = useRef(null);
 
-    
+
     const handleSearch = (event) => {
         const searchQuery = event.target.value.toLowerCase();
         setFilterText(searchQuery);
@@ -90,21 +118,21 @@ const User = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        
+
         const newUser = {
             name: `${user.firstName} ${user.lastName}`,
             email: user.email,
-            role: 'New User',  
+            role: 'New User',
             phone: user.phone,
             dateCreated: new Date().toLocaleDateString(),
             lastLogin: new Date().toLocaleDateString(),
         };
 
-        
+
         setData((prevData) => [...prevData, newUser]);
         setFilteredData((prevData) => [...prevData, newUser]);
 
-        
+
         setUser({
             firstName: '',
             lastName: '',
@@ -116,7 +144,7 @@ const User = () => {
         });
     };
 
-    
+
     const scrollToForm = () => {
         if (formRef.current) {
             formRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -127,20 +155,22 @@ const User = () => {
         <div>
 
             <div style={{ margin: 20, display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-                <div style={{ width: '260px' }}>
+                <div style={{ width: '260px', marginTop: 24 }}>
                     <div style={{ display: 'flex', justifyContent: 'end' }}>
                         <FaBars />
                     </div>
                     <div style={{ marginTop: 12 }}>
-                        <p style={{ padding: 6, backgroundColor: 'blue', color: 'white', borderRightStyle: 0, borderRadius: '12px' }}>User</p>
+                        {/* <p style={{padding: 6px, background-color: blue, color: white, border-top-right-radius: 12px; border-bottom-right-radius: 12px}}>User</p> */}
+
+                        <p style={{ padding: 6, backgroundColor: 'blue', color: 'white', borderTopRightRadius: '14px', borderBottomRightRadius: '16px' }}>User</p>
                     </div>
                 </div>
 
-                <div>
-                    <div style={{ width: '1100px', padding: 20 }}>
+                <div style={{ backgroundColor: '#eceaec' }}>
+                    <div style={{ width: '1200px', padding: 20 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <h2>Users</h2>
-                            {}
+                            { }
                             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 6 }}>
                                 <input
                                     type="text"
@@ -149,11 +179,11 @@ const User = () => {
                                     onChange={handleSearch}
                                     style={{ padding: 8, marginBottom: 20, width: '300px', borderRadius: '5px', border: '1px solid #ccc' }}
                                 />
-                                <button onClick={scrollToForm} style={{ height: '70%' }}>Create User</button>
+                                <button onClick={scrollToForm} style={{ height: '70%', border: 0, color: 'white', backgroundColor: 'blue', borderRadius: 10, paddingX: 8 }}>Create User</button>
                             </div>
                         </div>
 
-                        {}
+                        { }
                         <DataTable
                             columns={columns}
                             data={filteredData}
@@ -165,15 +195,15 @@ const User = () => {
             </div>
 
             <div ref={formRef}>
-                <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto' }}>
-                    <h3>Create User</h3>
+                <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '60px auto' }}>
+                    <h3 style={{ textAlign: 'center' }}>Create User</h3>
 
                     <label style={{ display: 'block', marginBottom: '8px' }}>
-                        First Name 
+                        First Name
                         <input
                             type="text"
                             name="firstName"
-                            placeholder='2-50 chars'
+                            placeholder='Please enter between 2-50 characters'
                             value={user.firstName}
                             onChange={handleChange}
                             required
@@ -184,10 +214,10 @@ const User = () => {
                     </label>
 
                     <label style={{ display: 'block', marginBottom: '8px' }}>
-                        Last Name 
+                        Last Name
                         <input
                             type="text"
-                            placeholder='2-50 chars'
+                            placeholder='Please enter between 2-50 characters'
                             name="lastName"
                             value={user.lastName}
                             onChange={handleChange}
@@ -221,7 +251,7 @@ const User = () => {
                             value={user.dateOfBirth}
                             onChange={handleChange}
                             required
-                            max={new Date().toISOString().split('T')[0]} 
+                            max={new Date().toISOString().split('T')[0]}
                             style={{ width: '100%', padding: '8px', marginBottom: '12px' }}
                         />
                     </label>
@@ -245,7 +275,7 @@ const User = () => {
                             value={user.phone}
                             onChange={handleChange}
                             required
-                            pattern="[0-9]{10}" 
+                            pattern="[0-9]{10}"
                             style={{ width: '100%', padding: '8px', marginBottom: '12px' }}
                         />
                     </label>
@@ -262,9 +292,11 @@ const User = () => {
                         />
                     </label>
 
-                    <button type="submit" style={{ padding: '10px 20px', cursor: 'pointer' }}>
-                        Submit
-                    </button>
+                    <div style={{ margin: '0 auto', display: 'flex', justifyContent: 'center' }}>
+                        <button type="submit" style={{ padding: '10px 20px', cursor: 'pointer', backgroundColor: "blue", color: 'white', border: 0, borderRadius: 12 }}>
+                            Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
